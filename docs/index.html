@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>my gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f7f6f2;
+      color: #111;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+    }
+
+    header {
+      padding: 40px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    header h1 {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .grid {
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 32px;
+    }
+
+    .entry img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .entry p {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .entry h3 {
+      margin-top: 6px;
+      font-size: 16px;
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>my gallery</h1>
+  </header>
+
+  <div class="grid">
+    
+    <div class="entry">
+      <img src="images/GZ8Qe3yWoAAOCcW.jpeg" alt="2026-03-04-first-entry" />
+      <h3>2026-03-04-first-entry</h3>
+      <p>I have arrived</p>
+    </div>
+  </div>
+
+</body>
+</html>
