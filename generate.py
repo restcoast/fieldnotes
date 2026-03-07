@@ -107,13 +107,13 @@ def build_site():
     <div class="entry">
       <img src="images/{image.name}" alt="{title}" />
       <h3>{title}</h3>
-      <p>{body}</p>
+      <p>{body.replace(chr(10), '<br>')}</p>
     </div>""")
         else:
             items.append(f"""
     <div class="entry">
       <h3>{title}</h3>
-      <p>{body}</p>
+      <p>{body.replace(chr(10), '<br>')}</p>
     </div>""")
 
     html = PAGE_TEMPLATE.format(
