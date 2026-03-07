@@ -3,92 +3,229 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>scrapbook</title>
+  <title>screenshots</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background: #f7f6f2;
       color: #111;
       font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
+      font-weight: 300;
+      height: 100vh;
+      overflow: hidden;
     }
 
     header {
-      padding: 40px;
-      border-bottom: 1px solid #ccc;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
     }
 
     header h1 {
-      font-size: 18px;
+      font-size: 13px;
       font-weight: 400;
+      letter-spacing: 0.05em;
+      color: #aaa;
     }
 
-    .grid {
-      padding: 40px;
+    .counter {
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: 0.05em;
+    }
+
+    /* CAROUSEL */
+    .carousel {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .slide {
+      min-width: 100vw;
+      height: 100vh;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 32px;
+      grid-template-columns: 1fr 1fr;
+      padding: 80px 40px 40px;
+      gap: 40px;
+      align-items: center;
     }
 
-    .entry img {
+    .slide-image {
+      height: 100%;
+      max-height: calc(100vh - 120px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-image img {
       width: 100%;
-      
-      object-fit: cover;
+      height: 100%;
+      object-fit: contain;
       display: block;
     }
 
-    .entry p {
-      margin-top: 8px;
-      font-size: 14px;
-      color: #555;
-      line-height: 1.6;
+    .slide-text {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
     }
 
-    .entry h3 {
-      margin-top: 6px;
-      font-size: 16px;
+    .slide-text h2 {
+      font-size: 13px;
       font-weight: 400;
-      font-style: italic;
+      color: #aaa;
+      letter-spacing: 0.05em;
+    }
+
+    .slide-text p {
+      font-size: 15px;
+      line-height: 2;
+      color: #111;
+      white-space: pre-line;
+    }
+
+    /* text-only slide */
+    .slide.text-only {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ARROWS */
+    .arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      color: #ccc;
+      padding: 16px;
+      transition: color 0.2s;
+      z-index: 10;
+      user-select: none;
+    }
+
+    .arrow:hover { color: #111; }
+    .arrow.left { left: 8px; }
+    .arrow.right { right: 8px; }
+    .arrow:disabled { opacity: 0; pointer-events: none; }
+
+    @media (max-width: 640px) {
+      .slide { grid-template-columns: 1fr; grid-template-rows: 1fr auto; padding: 72px 24px 24px; gap: 24px; }
+      .slide-text { padding: 0; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>scrapbook</h1>
+    <h1>screenshots</h1>
+    <span class="counter"><span id="current">1</span> / 5</span>
   </header>
 
-  <div class="grid">
+  <div class="carousel" id="carousel">
     
-    <div class="entry">
-      <h3>January 2022</h3>
-      <p>I had the pleasure of getting sectioned,<br>Ran away two weeks later,<br>An unforseen consequence<br>Of good behaviour.</p>
+    <div class="slide text-only">
+      <div class="slide-text">
+        <h2>January 2022</h2>
+        <p>I had the pleasure of getting sectioned,
+Ran away two weeks later,
+An unforseen consequence
+Of good behaviour.</p>
+      </div>
     </div>
 
-    <div class="entry">
-      <h3>Athens</h3>
-      <p>As the lawyer gave me the news that my life was falling apart,<br>I had the perfect view of the Acropolis,<br>Drenched in the sparkling afternoon sun,<br>Against the backdrop of a bright blue sky,<br>Fluttering curtains billowing through the open balcony doors.<br><br>Could be worse.</p>
+    <div class="slide text-only">
+      <div class="slide-text">
+        <h2>Athens</h2>
+        <p>As the lawyer gave me the news that my life was falling apart,
+I had the perfect view of the Acropolis,
+Drenched in the sparkling afternoon sun,
+Against the backdrop of a bright blue sky,
+Fluttering curtains billowing through the open balcony doors.
+
+Could be worse.</p>
+      </div>
     </div>
 
-    <div class="entry">
-      <h3>Questions</h3>
-      <p>What’s going on?<br>How did this happen?<br>Why did they do that?<br>When are you back?<br><br>How are you doing?<br>Where are you now?<br>What is your plan?<br>When are you back?<br><br>How are you feeling?<br>When can we chat?<br>Want to meet up?<br>When you are back?</p>
+    <div class="slide text-only">
+      <div class="slide-text">
+        <h2>Questions</h2>
+        <p>What’s going on?
+How did this happen?
+Why did they do that?
+When are you back?
+
+How are you doing?
+Where are you now?
+What is your plan?
+When are you back?
+
+How are you feeling?
+When can we chat?
+Want to meet up?
+When you are back?</p>
+      </div>
     </div>
 
-    <div class="entry">
-      <img src="images/HCmqVp_WIAAOhjY.jpeg" alt="Day 1" />
-      <h3>Day 1</h3>
-      <p>Hair doesn't matter, horizontal.<br>Hot water bottle, hormonal.</p>
+    <div class="slide">
+      <div class="slide-image">
+        <img src="images/HCmqVp_WIAAOhjY.jpeg" alt="Day 1" />
+      </div>
+      <div class="slide-text">
+        <h2>Day 1</h2>
+        <p>Hair doesn't matter, horizontal.
+Hot water bottle, hormonal.</p>
+      </div>
     </div>
 
-    <div class="entry">
-      <img src="images/GZ8Qe3yWoAAOCcW.jpeg" alt="Art! Time to start." />
-      <h3>Art! Time to start.</h3>
-      <p></p>
+    <div class="slide">
+      <div class="slide-image">
+        <img src="images/GZ8Qe3yWoAAOCcW.jpeg" alt="Art! Time to start." />
+      </div>
+      <div class="slide-text">
+        <h2>Art! Time to start.</h2>
+        <p></p>
+      </div>
     </div>
   </div>
+
+  <button class="arrow left" id="prev" onclick="go(-1)" disabled>&#8592;</button>
+  <button class="arrow right" id="next" onclick="go(1)">&#8594;</button>
+
+  <script>
+    let current = 0;
+    const total = 5;
+
+    function go(dir) {
+      current = Math.max(0, Math.min(total - 1, current + dir));
+      document.getElementById('carousel').style.transform = `translateX(-${current * 100}vw)`;
+      document.getElementById('current').textContent = current + 1;
+      document.getElementById('prev').disabled = current === 0;
+      document.getElementById('next').disabled = current === total - 1;
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') go(1);
+      if (e.key === 'ArrowLeft') go(-1);
+    });
+  </script>
 
 </body>
 </html>
