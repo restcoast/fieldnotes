@@ -205,12 +205,12 @@ def build_site():
             shutil.copy2(image, OUTPUT_DIR / "images" / image.name)
             slides.append(f"""
     <div class="slide">
-      <div class="slide-image">
-        <img src="images/{image.name}" alt="{title}" />
-      </div>
       <div class="slide-text">
         <h2>{title}</h2>
         <p>{body}</p>
+      </div>
+      <div class="slide-image">
+        <img src="images/{image.name}" alt="{title}" />
       </div>
     </div>""")
         else:
