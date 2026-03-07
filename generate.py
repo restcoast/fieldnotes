@@ -1,7 +1,7 @@
 import shutil
 from pathlib import Path
 
-SITE_TITLE = "screenshots"
+SITE_TITLE = "sentences"
 ENTRIES_DIR = Path("entries")
 OUTPUT_DIR = Path("docs")
 
