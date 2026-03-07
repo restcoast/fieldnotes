@@ -136,11 +136,20 @@
 
   <header>
     <h1>sentences</h1>
-    <span class="counter"><span id="current">1</span> / 5</span>
+    <span class="counter"><span id="current">1</span> / 6</span>
   </header>
 
   <div class="carousel" id="carousel">
     
+    <div class="slide text-only">
+      <div class="slide-text">
+        <h2>What will you do now?</h2>
+        <p>Art.
+I've got time,
+So it's time to start.</p>
+      </div>
+    </div>
+
     <div class="slide text-only">
       <div class="slide-text">
         <h2>Sertraline</h2>
@@ -211,7 +220,7 @@ Hot water bottle, hormonal.</p>
 
   <script>
     let current = 0;
-    const total = 5;
+    const total = 6;
 
     function go(dir) {
       current = Math.max(0, Math.min(total - 1, current + dir));
