@@ -1,7 +1,7 @@
 import shutil
 from pathlib import Path
 
-SITE_TITLE = "field notes"
+SITE_TITLE = "my gallery"
 ENTRIES_DIR = Path("entries")
 OUTPUT_DIR = Path("docs")
 
@@ -41,7 +41,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 
     .entry img {{
       width: 100%;
-      aspect-ratio: 1;
+      
       object-fit: cover;
       display: block;
     }}
@@ -107,13 +107,13 @@ def build_site():
     <div class="entry">
       <img src="images/{image.name}" alt="{title}" />
       <h3>{title}</h3>
-      <p>{body.replace(chr(10), '<br>')}</p>
+      <p>{body}</p>
     </div>""")
         else:
             items.append(f"""
     <div class="entry">
       <h3>{title}</h3>
-      <p>{body.replace(chr(10), '<br>')}</p>
+      <p>{body}</p>
     </div>""")
 
     html = PAGE_TEMPLATE.format(
