@@ -1,7 +1,7 @@
 import shutil
 from pathlib import Path
 
-SITE_TITLE = "sentences"
+SITE_TITLE = "screenshots"
 ENTRIES_DIR = Path("entries")
 OUTPUT_DIR = Path("docs")
 
@@ -176,8 +176,10 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 
 
 def read_note(entry_path):
-    f = entry_path / "note.txt"
-    return f.read_text(encoding="utf-8").strip() if f.exists() else ""
+    for f in entry_path.iterdir():
+        if f.suffix.lower() == ".txt":
+            return f.read_text(encoding="utf-8").strip()
+    return ""
 
 def find_image(entry_path):
     for f in entry_path.iterdir():
