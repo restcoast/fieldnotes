@@ -136,11 +136,35 @@
 
   <header>
     <h1>sentences</h1>
-    <span class="counter"><span id="current">1</span> / 8</span>
+    <span class="counter"><span id="current">1</span> / 9</span>
   </header>
 
   <div class="carousel" id="carousel">
     
+    <div class="slide text-only">
+      <div class="slide-text">
+        <h2>How r u?</h2>
+        <p>Exiled
+Betrayed
+Displaced
+Where’s home?
+Toronto
+Vancouver
+North Delta
+New phone.
+
+Fibromyalgia?
+Epstein barr?
+Lyme disease?
+Cuz stress.
+
+Mania
+Psychosis
+Depression
+No rest.</p>
+      </div>
+    </div>
+
     <div class="slide text-only">
       <div class="slide-text">
         <h2>Sick</h2>
@@ -258,7 +282,7 @@ Hot water bottle, hormonal.</p>
 
   <script>
     let current = 0;
-    const total = 8;
+    const total = 9;
 
     function go(dir) {
       current = Math.max(0, Math.min(total - 1, current + dir));
